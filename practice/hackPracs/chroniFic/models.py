@@ -67,6 +67,7 @@ class Specialist(models.Model):
 
 class FAQ(models.Model):
     specialist=models.ForeignKey(Specialist)
+    dep =models.ForeignKey(Department,on_delete=models.CASCADE,default='')
     faq_id=models.CharField(blank=False, null=False,max_length=100)
     questions=models.TextField(max_length=50)
     answers=models.TextField(max_length=50)
