@@ -51,6 +51,8 @@ class Specialist(models.Model):
     email = models.EmailField(max_length=200)
     phone = models.CharField(max_length=50)
     created_date = models.DateTimeField(default=timezone.now)
+    available_from = models.DateTimeField(auto_now_add=True)
+    available_to = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now_add=True)
 
     def created(self):
@@ -69,7 +71,9 @@ class FAQ(models.Model):
     specialist=models.ForeignKey(Specialist)
     dep =models.ForeignKey(Department,on_delete=models.CASCADE,default='')
     faq_id=models.CharField(blank=False, null=False,max_length=100)
-    questions=models.TextField(max_length=50)
-    answers=models.TextField(max_length=50)
+    questions=models.TextField(max_length=500)
+    answers=models.TextField(max_length=500)
 
 
+class Schedule(models.Model):
+    schedule_id = models.AutoField(primary_key=True)
